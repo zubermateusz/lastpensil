@@ -35,33 +35,47 @@ public class Main {
         playersNames.add("Jack");
 
         int player1 = 2;// temporary set player1 to id not used
-        System.out.println("Who will be the first (" + playersNames.get(0) + ", " + playersNames.get(0) + "):");
+        System.out.println("Who will be the first (" + playersNames.get(0) + ", " + playersNames.get(1) + "):");
         while (player1 == 2) {
             switch (scanner.nextLine()) { // read who started
                 case ("John") -> player1 = 0;
                 case ("Jack") -> player1 = 1;
-                default -> System.out.println("Choose between '" + playersNames.get(0) + "' and '" + playersNames.get(1) + "':");
+                default -> System.out.println("Choose between '" + playersNames.get(0) + "' and '" + playersNames.get(1) + "'");
             }
         }
         //start the game
         printPencils(pencils);// print pencils in one line
 
-        while(pencils > 0) {
-            System.out.println(playersNames.get(player1) + "'s turn:");
-            int tempPencils = 0;
-            do {
+        for(;pencils > 0;) {
+            System.out.println(playersNames.get(player1) + "'s turn!");
+            int tempPencils = pencils;
+            for(;;) {
                 try {
                     tempPencils = Integer.parseInt(scanner.nextLine());
                     if (tempPencils >= 1 && tempPencils <= 3) {
+                        if (tempPencils > pencils) {
+                            System.out.println("Too many pencils were taken");
+                            continue;
+                        }
                         pencils -= tempPencils; // read how many pencils take player
-                        printPencils(pencils);// print pencils in one line
+                        if (pencils == 0) { // player lost
+                            player1++; //select next player name who won
+                            if (player1 >= playersNames.size()) {
+                                player1 = 0; // change on list[0]
+                            }
+                            System.out.println(playersNames.get(player1) + " won!");
+                            break;
+                        } else {
+                            printPencils(pencils);// print pencils in one line
+                            break;
+                        }
                     } else {
-                        System.out.println("Possible values: '1', '2' or '3'");
+                        throw  new NumberFormatException(); // if tempPencils != 1,2,3
                     }
                 } catch (NumberFormatException e) {
                     System.out.println("Possible values: '1', '2' or '3'");
                 }
-            } while (pencils == tempPencils);
+            }
 
             player1++; //select next player name
             if (player1 >= playersNames.size()) {
