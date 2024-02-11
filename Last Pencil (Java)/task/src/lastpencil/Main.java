@@ -34,15 +34,15 @@ public class Main {
         playersNames.add("John");
         playersNames.add("Jack");
 
-        System.out.println("Who will be the first (John, Jack)");
-        scanner.nextLine(); // read line after int
-        int player1 = 0;
-
-        switch (scanner.nextLine()) { // read who started
-            case ("John")-> player1 = 0;
-            case ("Jack")-> player1 = 1;
+        int player1 = 2;// temporary set player1 to id not used
+        System.out.println("Who will be the first (" + playersNames.get(0) + ", " + playersNames.get(0) + "):");
+        while (player1 == 2) {
+            switch (scanner.nextLine()) { // read who started
+                case ("John") -> player1 = 0;
+                case ("Jack") -> player1 = 1;
+                default -> System.out.println("Choose between '" + playersNames.get(0) + "' and '" + playersNames.get(1) + "':");
+            }
         }
-
         //start the game
         printPencils(pencils);// print pencils in one line
 
