@@ -48,9 +48,22 @@ public class Main {
 
         while(pencils > 0) {
             System.out.println(playersNames.get(player1) + "'s turn:");
-            pencils -= scanner.nextInt(); // read how many pencils take player
-            printPencils(pencils);// print pencils in one line
-            player1++;
+            int tempPencils = 0;
+            do {
+                try {
+                    tempPencils = Integer.parseInt(scanner.nextLine());
+                    if (tempPencils >= 1 && tempPencils <= 3) {
+                        pencils -= tempPencils; // read how many pencils take player
+                        printPencils(pencils);// print pencils in one line
+                    } else {
+                        System.out.println("Possible values: '1', '2' or '3'");
+                    }
+                } catch (NumberFormatException e) {
+                    System.out.println("Possible values: '1', '2' or '3'");
+                }
+            } while (pencils == tempPencils);
+
+            player1++; //select next player name
             if (player1 >= playersNames.size()) {
                 player1 = 0; // change on list[0]
             }
