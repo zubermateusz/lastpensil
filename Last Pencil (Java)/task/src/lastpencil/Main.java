@@ -2,7 +2,6 @@ package lastpencil;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -19,7 +18,12 @@ public class Main {
 
         System.out.println("How many pencils would you like to use:"); // ask user
         Scanner scanner = new Scanner(System.in);
-        int pencils = scanner.nextInt();// read how many pencils start
+        int pencils = 0;
+        try {
+            pencils = Integer.parseInt(scanner.nextLine());// read how many pencils start
+        } catch (NumberFormatException e) {
+            System.out.println("The number of pencils should be numeric");
+        }
 
         List<String> playersNames = new ArrayList<>();// collection of players names
         playersNames.add("John");
@@ -30,14 +34,8 @@ public class Main {
         int player1 = 0;
 
         switch (scanner.nextLine()) { // read who started
-            case ("John"): {
-                player1 = 0;
-                break;
-            }
-            case ("Jack"): {
-                player1 = 1;
-                break;
-            }
+            case ("John")-> player1 = 0;
+            case ("Jack")-> player1 = 1;
         }
 
         //start the game
