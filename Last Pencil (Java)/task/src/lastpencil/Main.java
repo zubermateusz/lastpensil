@@ -19,10 +19,15 @@ public class Main {
         System.out.println("How many pencils would you like to use:"); // ask user
         Scanner scanner = new Scanner(System.in);
         int pencils = 0;
-        try {
-            pencils = Integer.parseInt(scanner.nextLine());// read how many pencils start
-        } catch (NumberFormatException e) {
-            System.out.println("The number of pencils should be numeric");
+        while (pencils == 0) {
+            try {
+                pencils = Integer.parseInt(scanner.nextLine());// read how many pencils start
+            } catch (NumberFormatException e) {
+                System.out.println("The number of pencils should be numeric");
+            }
+            if (pencils == 0) {
+                System.out.println("The number of pencils should be positive");
+            }
         }
 
         List<String> playersNames = new ArrayList<>();// collection of players names
