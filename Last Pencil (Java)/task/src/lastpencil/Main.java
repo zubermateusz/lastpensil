@@ -63,6 +63,7 @@ public class Main {
                             if (player1 >= playersNames.size()) {
                                 player1 = 0; // change on list[0]
                             }
+
                             System.out.println(playersNames.get(player1) + " won!");
                             break;
                         } else {
