@@ -83,15 +83,5 @@ public class Main {
                 player1 = 0; // change on list[0]
             }
         }
-        //Random random = new Random();
-        //int pencils = random.nextInt(7);
-        /*printPencils(pencils); // print pencils in one line
-        System.out.println();
-        System.out.println(player1 + " is going first!");*/
-
     }
-
-
-
-
 }
